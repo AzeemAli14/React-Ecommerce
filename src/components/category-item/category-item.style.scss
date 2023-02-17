@@ -1,11 +1,4 @@
-.categories-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .category-container {
+.category-container {
     min-width: 30%;
     height: 240px;
     flex: 1 1 auto;
@@ -73,18 +66,19 @@
       }
     }
   }
-
-// .categories-container {
-//     background-color: red;
-//     padding: 10px;
-
-//     .categories-container {
-//         background-color: green;
-//         padding: 20px;
-
-//         .category-body-container {
-//             background-color: blue;
-//             padding: 30px;
-//         }
-//     }
-// }
+  
+  // .categories-container {
+  //     background-color: red;
+  //     padding: 10px;
+  
+  //     .categories-container {
+  //         background-color: green;
+  //         padding: 20px;
+  
+  //         .category-body-container {
+  //             background-color: blue;
+  //             padding: 30px;
+  //         }
+  //     }
+  // }
+  
