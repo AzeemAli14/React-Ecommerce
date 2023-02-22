@@ -5,7 +5,7 @@
     letter-spacing: 0.5px;
     line-height: 50px;
     padding: 0 35px 0 35px;
-    font-size: 15px;
+    font-size: 13px;
     background-color: black;
     color: white;
     text-transform: uppercase;
@@ -15,6 +15,7 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
+    border-radius: 30px;
   
     &:hover {
       background-color: white;
@@ -23,12 +24,20 @@
     }
   
     &.google-sign-in {
-      background-color: #4285f4;
-      color: white;
+      background-image: url("../assets/google.svg");
+      background-repeat: no-repeat;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      border: 2px solid #d4d4d4;
+      min-width: 275px;
+      justify-content:end;
+      margin: 0 0 0 40px;
+
   
       &:hover {
-        background-color: #357ae8;
-        border: none;
+        background-color: #d1d1d1;
+        border: 2px solid #000000;
+        transition: background-color .2s,border-color .2s;
       }
     }
   

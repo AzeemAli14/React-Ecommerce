@@ -3,9 +3,10 @@ import {
   signInWithGooglePopup,
   createUserDocument,
 } from "../../utils/firebase/firebase.auth";
-import SignUpForm from "../../forms/signUp/signUp.form";
+import SignInForm from "../../signIn/signIn.component";
+import SignUpForm from "../../signUp/signUp.component";
 
-const SignIn = () => {
+const Authentication = () => {
   // useEffect(() => {
   //     const response = getRedirectResult(auth);
   //     // console.log("Response in useEffect", response)
@@ -25,9 +26,10 @@ const SignIn = () => {
   return (
     <div>
       <button onClick={onPopup}>Sign In with Popup</button>
+      <SignInForm />
       <SignUpForm />
     </div>
   );
 };
 
-export default SignIn;
+export default Authentication;
