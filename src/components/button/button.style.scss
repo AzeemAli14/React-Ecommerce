@@ -29,9 +29,10 @@
       background-color: #ffffff;
       color: rgb(0, 0, 0);
       border: 2px solid #d4d4d4;
-      min-width: 275px;
-      justify-content:end;
-      margin: 0 0 0 40px;
+      min-width: 235px;
+      padding: 0 0 0 35px;
+      justify-content: space-around;
+      margin: auto 20px;
 
   
       &:hover {

@@ -32,21 +32,27 @@ const SignInForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // if (password !== confirmPassword) {
-    //   alert("Password not matched.");
-    //   return;
-    // }
     try {
-      // const { user } = await createEmailAuth(email, password);
-      // await createUserDocument(user, { displayName });
       const response = await signInEmailAuth(email, password);
 
       clearStates();
     } catch (error) {
-      // if (error.code === "auth/email-already-in-use") {
-      //   alert("Cannot create user, email already in use");
-      // }
-      // console.log("Submit Error", error);
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert("Invalid Password");
+          break;
+        case "auth/wrong-password":
+          alert("Invalid Email");
+          break;
+        case "auth/popup-closed-by-user":
+          alert("Login popup cancelled by user");
+          break;
+        case "auth/cancelled-popup-request":
+          alert("Cancelled popup request");
+          break;
+        default:
+          console.log(" handle submit Error", error);
+      }
     }
   };
 
@@ -55,14 +61,6 @@ const SignInForm = () => {
       <h2>Already have an account ?</h2>
       <span>Sign in with your Email and Password</span>
       <form onSubmit={handleSubmit}>
-        {/* <FormInput
-          label="Display Name"
-          type="text"
-          required
-          onChange={handleChange}
-          name="displayName"
-          value={displayName}
-        /> */}
         <FormInput
           label="Email"
           type="email"
@@ -79,18 +77,10 @@ const SignInForm = () => {
           name="password"
           value={password}
         />
-        {/* <FormInput
-          label="Confirm Password"
-          type="password"
-          required
-          onChange={handleChange}
-          name="confirmPassword"
-          value={confirmPassword}
-        /> */}
 
         <div className="buttons-container">
           <Button type="submit">Login</Button>
-          <Button onClick={signInWithGoogle} buttonType="google" >
+          <Button type="button" onClick={signInWithGoogle} buttonType="google">
             Login in with Google
           </Button>
         </div>
