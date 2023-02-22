@@ -18,7 +18,7 @@ $main-color: black;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
-    width: 100%;
+    width: 365px;
     border: none;
     border-radius: 0;
     border-bottom: 1px solid $sub-color;
@@ -45,7 +45,7 @@ $main-color: black;
     pointer-events: none;
     left: 5px;
     top: 10px;
-    transition: 300ms ease all;
+    // transition: 300ms ease all;
 
     &.shrink {
       @include shrinkLabel();
