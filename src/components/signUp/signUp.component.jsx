@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   createEmailAuth,
   createUserDocument,
+  signInWithGoogleRedirect,
 } from "../utils/firebase/firebase.auth";
-import './signUp.style.scss'
+import "./signUp.style.scss";
 import Button from "../button/button.component";
 import FormInput from "../forms/formInput/formInput.form";
+import {UserContext} from "../../context/user.context"
 
 const defaultFormFields = {
   displayName: "",
@@ -13,9 +15,12 @@ const defaultFormFields = {
   password: "",
   confirmPassword: "",
 };
+
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+
+  const {setCurrentUser} = useContext(UserContext);
 
   const clearStates = () => {
     setFormFields(defaultFormFields);
@@ -34,6 +39,7 @@ const SignUpForm = () => {
     }
     try {
       const { user } = await createEmailAuth(email, password);
+      setCurrentUser(user);
       await createUserDocument(user, { displayName });
       clearStates();
     } catch (error) {
@@ -82,7 +88,18 @@ const SignUpForm = () => {
           value={confirmPassword}
         />
 
-        <Button buttonType="inverted" type="submit">Sign up</Button>
+        <div className="buttons-container">
+          <Button buttonType="inverted" type="submit">
+            Sign up
+          </Button>
+          <Button
+            type="button"
+            onClick={signInWithGoogleRedirect}
+            buttonType="google"
+          >
+            Sign up with Google
+          </Button>
+        </div>
       </form>
     </div>
   );

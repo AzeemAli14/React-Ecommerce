@@ -28,7 +28,7 @@
       background-repeat: no-repeat;
       background-color: #ffffff;
       color: rgb(0, 0, 0);
-      border: 2px solid #d4d4d4;
+      border: 1px solid #000000;
       min-width: 205px;
       padding: 0 0 0 40px;
       justify-content: space-around;
@@ -38,7 +38,7 @@
   
       &:hover {
         background-color: #d1d1d1;
-        border: 2px solid #000000;
+        border: 1px solid #000000;
         transition: background-color .2s,border-color .2s;
       }
     }

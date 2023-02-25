@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   createUserDocument,
   signInEmailAuth,
@@ -7,6 +7,7 @@ import {
 import "./signIn.style.scss";
 import Button from "../button/button.component";
 import FormInput from "../forms/formInput/formInput.form";
+import { UserContext } from "../../context/user.context";
 
 const defaultFormFields = {
   email: "",
@@ -16,13 +17,15 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
+  const {setCurrentUser} = useContext(UserContext);
+
   const clearStates = () => {
     setFormFields(defaultFormFields);
   };
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
-    const userDoc = await createUserDocument(user);
+    await createUserDocument(user);
   };
 
   const handleChange = (event) => {
@@ -33,8 +36,8 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInEmailAuth(email, password);
-
+      const {user} = await signInEmailAuth(email, password);
+      setCurrentUser(user);
       clearStates();
     } catch (error) {
       switch (error.code) {
@@ -51,7 +54,7 @@ const SignInForm = () => {
           alert("Cancelled popup request");
           break;
         default:
-          console.log(" handle submit Error", error);
+          console.log("Handle submit Error", error);
       }
     }
   };
